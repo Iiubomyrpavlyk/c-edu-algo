@@ -18,6 +18,8 @@ queue_t * queue()
     queue->remove = queue_remove;
     
     queue->isempty = queue_isempty;
+    
+    queue->clear = queue_clear;
 
     queue->size = 0;
     queue->head = NULL;
@@ -87,6 +89,17 @@ bool queue_remove(queue_t *queue)
     free(node->data);
     free(node);          
                         
+    return true;
+}
+
+bool queue_clear(queue_t *queue)
+{
+    if (queue == NULL)
+        return true;
+
+    while (queue->size--) 
+        queue->remove(queue);      
+  
     return true;
 }
 

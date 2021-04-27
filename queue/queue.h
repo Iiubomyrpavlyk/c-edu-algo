@@ -14,12 +14,16 @@ extern bool queue_remove(queue_t * queue);
 
 extern bool queue_isempty(queue_t *queue);
 
+extern bool queue_clear(queue_t *queue);
+
 struct queue_s
 {
     bool (*insert)(queue_t *queue, const void *data, size_t size);
     bool (*remove)(queue_t *queue);
     
     bool (*isempty)(queue_t *queue);
+
+    bool (*clear)(queue_t *queue);
 
     size_t size;
     queue_node_t *head, *tail;
